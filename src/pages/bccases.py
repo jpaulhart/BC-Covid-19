@@ -189,7 +189,7 @@ def casesByHA():
         casex_total = 0
         casey_total = 0
         casex_percent = 0
-        casey_persent = 0
+        casey_percent = 0
 
         previous_ha = ''
         table_row = ''
@@ -197,19 +197,25 @@ def casesByHA():
         casey_total = ''
         casex_percent = ''
         casey_percent = ''
+        all_casex_total = ''
+        all_casey_total = ''
+
         for index, row in dfhagr.iterrows():
             if row['HA'] != previous_ha:
                 if previous_ha != '':
                     table_row = f'<tr valign="top"><td>{ha}</td><td>{hsda}</td><td style="text-align:right">{casex}</td><td style="text-align:right">{casey}</td></tr>\n'
                     table_rows += table_row
+                if row['HA'] == 'All':
+                    all_casex_total = row['Cases_Reported_x']
+                    all_casey_total = row['Cases_Reported_y']
                 ha = f"<b>{row['HA']}</b>"
                 hsda = f"<b>{row['HSDA']}</b>"
                 casex = f"<b>{'{:,}'.format(row['Cases_Reported_x'])}</b>"
                 casey = f"<b>{'{:,}'.format(row['Cases_Reported_y'])}</b>"
                 casex_total = row['Cases_Reported_x']
                 casey_total = row['Cases_Reported_y']
-                casex_percent = '<b>100.00%</b>'
-                casey_percent = '<b>100.00%</b>'
+                casex_percent = f"<br /><b>" + '{:.2f}'.format((row['Cases_Reported_x'] /  all_casex_total) * 100) + '%</b>'
+                casey_percent = f"<br /><b>" + '{:.2f}'.format((row['Cases_Reported_y'] /  all_casey_total) * 100) + '%</b>'
                 previous_ha = row['HA']
             else:
                 hsda += f"<br />{row['HSDA']}"
