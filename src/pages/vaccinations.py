@@ -21,8 +21,6 @@ import constants as cn
 # pylint: disable=line-too-long
 def write():
     """Used to write the page in the app.py file"""
-    st.title("Vaccinations by Day")
-    st.markdown('#### ')
 
     dfAdmin = pd.read_csv(cn.CANADA_VACCINATION_ADMINSTERED)
     dfAdmin['date_vaccine_administered64']= pd.to_datetime(dfAdmin['date_vaccine_administered'], format='%d-%m-%Y')
@@ -35,6 +33,18 @@ def write():
     dfDistr['date_vaccine_distributed'] = dfDistr['date_vaccine_distributed64'].dt.strftime('%Y-%m-%d')
     dfDistr = dfDistr.sort_values(['date_vaccine_distributed64'], ascending=[True])
     dfDistr['cumulative_dvaccine_mean'] = dfDistr['cumulative_dvaccine'].rolling(7).mean()
+
+    dfLastDate = dfDistr.tail(n=1)
+    last_date = dfLastDate['date_vaccine_distributed'].values[0]
+
+    dfFirstDate = dfDistr.head(n=1)
+    first_date = dfFirstDate['date_vaccine_distributed'].values[0]
+
+    date_range = f'Data range: {first_date} to {last_date}'
+
+    st.title("Vaccinations by Day")
+    st.markdown(f'<div style="font-size: 9pt">{date_range}</div>\n', unsafe_allow_html=True)
+    st.markdown('#### ')
 
     writeProvinceGraph(dfAdmin, dfDistr, 'BC')
     writeProvinceGraph(dfAdmin, dfDistr, 'Alberta')
