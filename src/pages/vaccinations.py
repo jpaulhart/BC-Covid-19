@@ -26,11 +26,13 @@ def write():
 
     dfAdmin = pd.read_csv(cn.CANADA_VACCINATION_ADMINSTERED)
     dfAdmin['date_vaccine_administered64']= pd.to_datetime(dfAdmin['date_vaccine_administered'], format='%d-%m-%Y')
+    dfAdmin['date_vaccine_administered'] = dfAdmin['date_vaccine_administered64'].dt.strftime('%Y-%m-%d')
     dfAdmin = dfAdmin.sort_values(['date_vaccine_administered64'], ascending=[True])
     dfAdmin['cumulative_avaccine_mean'] = dfAdmin['cumulative_avaccine'].rolling(7).mean()
 
     dfDistr = pd.read_csv(cn.CANADA_VACCINATION_DISTRIBUTED)
     dfDistr['date_vaccine_distributed64']= pd.to_datetime(dfDistr['date_vaccine_distributed'], format='%d-%m-%Y')
+    dfDistr['date_vaccine_distributed'] = dfDistr['date_vaccine_distributed64'].dt.strftime('%Y-%m-%d')
     dfDistr = dfDistr.sort_values(['date_vaccine_distributed64'], ascending=[True])
     dfDistr['cumulative_dvaccine_mean'] = dfDistr['cumulative_dvaccine'].rolling(7).mean()
 
