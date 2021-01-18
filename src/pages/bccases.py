@@ -214,7 +214,8 @@ def casesByHA():
                 casey = f"<b>{'{:,}'.format(row['Cases_Reported_y'])}</b>"
                 casex_total = row['Cases_Reported_x']
                 casey_total = row['Cases_Reported_y']
-                casex_percent = f"<br /><b>" + '{:.2f}'.format((row['Cases_Reported_x'] /  all_casex_total) * 100) + '%</b>'
+                cpx = (row['Cases_Reported_x'] /  all_casex_total) * 100
+                casex_percent = f"<br /><b>" + '{:.2f}'.format(cpx) + '%</b>'
                 casey_percent = f"<br /><b>" + '{:.2f}'.format((row['Cases_Reported_y'] /  all_casey_total) * 100) + '%</b>'
                 previous_ha = row['HA']
             else:
