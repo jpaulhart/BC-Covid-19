@@ -170,7 +170,7 @@ def casesByHA():
 
     # Merge into a single dataframe
     df  = dfw.merge(dfg, left_on=['HA','HSDA'], right_on=['HA','HSDA'])
-
+    # print(df)
     # Table of details for last week 
     table_rows =  '<div style="font-size: 9pt">\n'
 
@@ -178,6 +178,8 @@ def casesByHA():
     table_rows += '<tr><th>Health Authority</th><th>Heath Services Delivery Area</th><th colspan=4 style="text-align:center">Cases</th></tr>\n'
     table_rows += '<tr><th></th><th></th><th colspan=2>Last 7 Days</th><th colspan=2>Cases Total</th></tr>\n'
 
+    all_casex_total = 0
+    all_casey_total = 0
     unique_has = df.HA.unique()
     for unique_ha in unique_has:
         dfha = df[df['HA'] == unique_ha]
@@ -186,22 +188,19 @@ def casesByHA():
         hsda = ''
         casex = ''
         casey = ''
+
+        previous_ha = ''
+        table_row = ''
         casex_total = 0
         casey_total = 0
         casex_percent = 0
         casey_percent = 0
 
-        previous_ha = ''
-        table_row = ''
-        casex_total = ''
-        casey_total = ''
-        casex_percent = ''
-        casey_percent = ''
-        all_casex_total = ''
-        all_casey_total = ''
-
+        print(f'1 {all_casex_total}')
         for index, row in dfhagr.iterrows():
+            print(f'2 {all_casex_total}')
             if row['HA'] != previous_ha:
+                print(f'3 {all_casex_total}')
                 if previous_ha != '':
                     table_row = f'<tr valign="top"><td>{ha}</td><td>{hsda}</td><td style="text-align:right">{casex}</td><td style="text-align:right">{casey}</td></tr>\n'
                     table_rows += table_row
@@ -209,24 +208,39 @@ def casesByHA():
                     all_casex_total = row['Cases_Reported_x']
                     all_casey_total = row['Cases_Reported_y']
                 ha = f"<b>{row['HA']}</b>"
+
                 hsda = f"<b>{row['HSDA']}</b>"
                 casex = f"<b>{'{:,}'.format(row['Cases_Reported_x'])}</b>"
                 casey = f"<b>{'{:,}'.format(row['Cases_Reported_y'])}</b>"
                 casex_total = row['Cases_Reported_x']
                 casey_total = row['Cases_Reported_y']
-                cpx = (row['Cases_Reported_x'] /  all_casex_total) * 100
-                casex_percent = f"<br /><b>" + '{:.2f}'.format(cpx) + '%</b>'
-                casey_percent = f"<br /><b>" + '{:.2f}'.format((row['Cases_Reported_y'] /  all_casey_total) * 100) + '%</b>'
+                cx = row['Cases_Reported_x']
+                if all_casex_total > 0:
+                    cpx = (cx / all_casex_total) * 100
+                else:
+                    cpx = 0
+                casex_percent = f"<b>" + '{:.2f}'.format(cpx) + '%</b>'
+                cy = row['Cases_Reported_y']
+                if all_casey_total > 0:
+                    cpy = (cy / all_casey_total) * 100
+                else:
+                    cpy = 0
+                casey_percent = f"<b>" + '{:.2f}'.format(cpy) + '%</b>'
                 previous_ha = row['HA']
+                print(f'4 {all_casex_total}')
+
             else:
+                print(f'5 {all_casex_total}')
                 hsda += f"<br />{row['HSDA']}"
                 casex += f"<br />{'{:,}'.format(row['Cases_Reported_x'])}"
                 casey += f"<br />{'{:,}'.format(row['Cases_Reported_y'])}"
                 casex_percent += f"<br />" + '{:.2f}'.format((row['Cases_Reported_x'] /  casex_total) * 100) + '%'
                 casey_percent += f"<br />" + '{:.2f}'.format((row['Cases_Reported_y'] /  casey_total) * 100) + '%'
+                print(f'6 {all_casex_total}')
         table_row = f'<tr valign="top"><td>{ha}</td><td>{hsda}</td><td style="text-align:right">{casex}</td><td style="text-align:right">{casex_percent}</td><td style="text-align:right">{casey}</td><td style="text-align:right">{casey_percent}</td></tr>\n'
         table_rows += table_row
-
+        print(f'7 {all_casex_total}')
+    
     table_rows += '</table>\n'
     table_rows += '</div>\n'
     
