@@ -170,8 +170,6 @@ def casesByHA():
 
     # Merge into a single dataframe
     df  = dfw.merge(dfg, left_on=['HA','HSDA'], right_on=['HA','HSDA'])
-    # print(df)
-    # Table of details for last week 
     table_rows =  '<div style="font-size: 9pt">\n'
 
     table_rows += '<table border=1 cellspacing=0 cellpadding=0>\n'
@@ -196,11 +194,8 @@ def casesByHA():
         casex_percent = 0
         casey_percent = 0
 
-        print(f'1 {all_casex_total}')
         for index, row in dfhagr.iterrows():
-            print(f'2 {all_casex_total}')
             if row['HA'] != previous_ha:
-                print(f'3 {all_casex_total}')
                 if previous_ha != '':
                     table_row = f'<tr valign="top"><td>{ha}</td><td>{hsda}</td><td style="text-align:right">{casex}</td><td style="text-align:right">{casey}</td></tr>\n'
                     table_rows += table_row
@@ -227,19 +222,15 @@ def casesByHA():
                     cpy = 0
                 casey_percent = f"<b>" + '{:.2f}'.format(cpy) + '%</b>'
                 previous_ha = row['HA']
-                print(f'4 {all_casex_total}')
 
             else:
-                print(f'5 {all_casex_total}')
                 hsda += f"<br />{row['HSDA']}"
                 casex += f"<br />{'{:,}'.format(row['Cases_Reported_x'])}"
                 casey += f"<br />{'{:,}'.format(row['Cases_Reported_y'])}"
                 casex_percent += f"<br />" + '{:.2f}'.format((row['Cases_Reported_x'] /  casex_total) * 100) + '%'
                 casey_percent += f"<br />" + '{:.2f}'.format((row['Cases_Reported_y'] /  casey_total) * 100) + '%'
-                print(f'6 {all_casex_total}')
         table_row = f'<tr valign="top"><td>{ha}</td><td>{hsda}</td><td style="text-align:right">{casex}</td><td style="text-align:right">{casex_percent}</td><td style="text-align:right">{casey}</td><td style="text-align:right">{casey_percent}</td></tr>\n'
         table_rows += table_row
-        print(f'7 {all_casex_total}')
     
     table_rows += '</table>\n'
     table_rows += '</div>\n'
