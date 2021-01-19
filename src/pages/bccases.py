@@ -173,8 +173,9 @@ def casesByHA():
     table_rows =  '<div style="font-size: 9pt">\n'
 
     table_rows += '<table border=1 cellspacing=0 cellpadding=0>\n'
-    table_rows += '<tr><th>Health Authority</th><th>Heath Services Delivery Area</th><th colspan=4 style="text-align:center">Cases</th></tr>\n'
-    table_rows += '<tr><th></th><th></th><th colspan=2>Last 7 Days</th><th colspan=2>Cases Total</th></tr>\n'
+    table_rows += '<tr><th>Health Authority</th><th>Heath Services Delivery Area</th><th colspan=6 style="text-align:center">Cases</th></tr>\n'
+    table_rows += '<tr><th></th><th></th><th colspan=3 style="text-align:center">Last 7 Days</th><th colspan=3 style="text-align:center">Cases Total</th></tr>\n'
+    table_rows += '<tr><th></th><th></th><th style="text-align:center">Cases</th><th style="text-align:center">% of HA</th><th style="text-align:center">% of Tot</th><th style="text-align:center">Cases</th><th style="text-align:center">% of HA</th><th style="text-align:center">% of Tot</th></tr>\n'
 
     all_casex_total = 0
     all_casey_total = 0
@@ -193,11 +194,13 @@ def casesByHA():
         casey_total = 0
         casex_percent = 0
         casey_percent = 0
+        total_casex_percent = 0 
+        total_casey_percent = 0 
 
         for index, row in dfhagr.iterrows():
             if row['HA'] != previous_ha:
                 if previous_ha != '':
-                    table_row = f'<tr valign="top"><td>{ha}</td><td>{hsda}</td><td style="text-align:right">{casex}</td><td style="text-align:right">{casey}</td></tr>\n'
+                    table_row = f'<tr valign="top"><td>{ha}</td><td nowrap>{hsda}</td><td style="text-align:right">{casex}</td><td style="text-align:right">{casey}</td></tr>\n'
                     table_rows += table_row
                 if row['HA'] == 'All':
                     all_casex_total = row['Cases_Reported_x']
@@ -210,17 +213,13 @@ def casesByHA():
                 casex_total = row['Cases_Reported_x']
                 casey_total = row['Cases_Reported_y']
                 cx = row['Cases_Reported_x']
-                if all_casex_total > 0:
-                    cpx = (cx / all_casex_total) * 100
-                else:
-                    cpx = 0
+                cpx = (cx / casex_total) * 100
                 casex_percent = f"<b>" + '{:.2f}'.format(cpx) + '%</b>'
+                total_casex_percent = f"<b>" + '{:.2f}'.format((row['Cases_Reported_x'] /  all_casex_total) * 100) + '%</b>'
                 cy = row['Cases_Reported_y']
-                if all_casey_total > 0:
-                    cpy = (cy / all_casey_total) * 100
-                else:
-                    cpy = 0
+                cpy = (cy / casey_total) * 100
                 casey_percent = f"<b>" + '{:.2f}'.format(cpy) + '%</b>'
+                total_casey_percent = f"<b>" + '{:.2f}'.format((row['Cases_Reported_y'] /  all_casey_total) * 100) + '%</b>'
                 previous_ha = row['HA']
 
             else:
@@ -228,8 +227,10 @@ def casesByHA():
                 casex += f"<br />{'{:,}'.format(row['Cases_Reported_x'])}"
                 casey += f"<br />{'{:,}'.format(row['Cases_Reported_y'])}"
                 casex_percent += f"<br />" + '{:.2f}'.format((row['Cases_Reported_x'] /  casex_total) * 100) + '%'
+                total_casex_percent += f"<br />" + '{:.2f}'.format((row['Cases_Reported_x'] /  all_casex_total) * 100) + '%'
                 casey_percent += f"<br />" + '{:.2f}'.format((row['Cases_Reported_y'] /  casey_total) * 100) + '%'
-        table_row = f'<tr valign="top"><td>{ha}</td><td>{hsda}</td><td style="text-align:right">{casex}</td><td style="text-align:right">{casex_percent}</td><td style="text-align:right">{casey}</td><td style="text-align:right">{casey_percent}</td></tr>\n'
+                total_casey_percent += f"<br />" + '{:.2f}'.format((row['Cases_Reported_y'] /  all_casey_total) * 100) + '%'
+        table_row = f'<tr valign="top"><td>{ha}</td><td nowrap>{hsda}</td><td style="text-align:right">{casex}</td><td style="text-align:right">{casex_percent}</td><td style="text-align:right">{total_casex_percent}</td><td style="text-align:right">{casey}</td><td style="text-align:right">{casey_percent}</td><td style="text-align:right">{total_casey_percent}</td></tr>\n'
         table_rows += table_row
     
     table_rows += '</table>\n'
