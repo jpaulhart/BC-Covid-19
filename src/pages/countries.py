@@ -24,7 +24,8 @@ def write():
     st.title("Countries Covid Cases")
     st.markdown('#### ')
 
-    country_lists = [['Italy', 'Spain', 'Portugal'],
+    country_lists = [['US'],
+                     ['Italy', 'Spain', 'Portugal'],
                      ['Oman','Jordan','Morocco','Tunisia'],
                      ['Thailand','Cambodia','Vietnam'],
     ]        
