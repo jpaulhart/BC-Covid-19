@@ -6,7 +6,7 @@
 # Streamlit as the presentation method.
 #
 
-"""bccases page shows Canadian Provinces Cases"""
+"""countries page shows graphs about various countries cases"""
 import datetime
 from   datetime import timedelta
 import matplotlib.pyplot as plt
@@ -20,7 +20,7 @@ import constants as cn
 
 # pylint: disable=line-too-long
 def write():
-    """Used to write the page in the app.py file"""
+    """Used to write the page in the streamlit_app.py file"""
     st.title("Countries Covid Cases")
     st.markdown('#### ')
 

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 #
-# app.py
+# streamlit_app.py
 #
-# app.py is a web application written in Python and using
+# streamlit_app.py is a web application written in Python and using
 # Streamlit as the presentation method.
 #
 
