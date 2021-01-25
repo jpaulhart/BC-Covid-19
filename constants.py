@@ -51,3 +51,9 @@ PROV_POP = {
 
 FIRST_DATE = ""
 LAST_DATE = ""
+
+BCCDC_FIRST_DATE  = ""
+BCCDC_LAST_DATE  = ""
+
+VAX_FIRST_DATE  = ""
+VAX_LAST_DATE  = ""

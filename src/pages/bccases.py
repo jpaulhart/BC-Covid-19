@@ -22,6 +22,9 @@ import constants as cn
 def write():
     """Used to write the page in the app.py file"""
     st.title("BC Covid Cases")
+    st.markdown(f'<div style="font-size: 9pt">Case Dates: {cn.FIRST_DATE} to {cn.LAST_DATE}</div>\n', unsafe_allow_html=True)
+    st.markdown(f'<div style="font-size: 9pt">BCCDC Dates: {cn.BCCDC_FIRST_DATE} to {cn.BCCDC_LAST_DATE}</div>\n', unsafe_allow_html=True)
+    st.markdown(f'<div style="font-size: 9pt">Vaccination Dates: {cn.VAX_FIRST_DATE} to {cn.VAX_LAST_DATE}</div>\n', unsafe_allow_html=True)
 
     prov = 'British Columbia'
     
@@ -37,11 +40,11 @@ def write():
     dfTable = pd.merge(dfProv, dfTable, on=['Date'], how='outer')
     dfTable = dfTable.replace(np.nan,0)
 
-    st.markdown('<hr style="border-top: 8px solid #ccc; border-radius: 5px;" />', unsafe_allow_html=True)
+    st.markdown('<hr style="border-top: 5px solid #ccc; border-radius: 1px;" />', unsafe_allow_html=True)
     casesByDate(dfTable)
-    st.markdown('<hr style="border-top: 8px solid #bbb; border-radius: 5px;" />', unsafe_allow_html=True)
+    st.markdown('<hr style="border-top: 5px solid #bbb; border-radius: 1px;" />', unsafe_allow_html=True)
     graphsByGraphs(dfProv)
-    st.markdown('<hr style="border-top: 8px solid #bbb; border-radius: 5px;" />', unsafe_allow_html=True)
+    st.markdown('<hr style="border-top: 5px solid #bbb; border-radius: 1px;" />', unsafe_allow_html=True)
     casesByHA()
 
 #

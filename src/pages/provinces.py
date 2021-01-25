@@ -22,7 +22,10 @@ import constants as cn
 def write():
     """Used to write the page in the app.py file"""
     st.title("Canadian Provinces Covid Cases")
-    st.markdown('#### ')
+    st.markdown(f'<div style="font-size: 9pt">Case Dates: {cn.FIRST_DATE} to {cn.LAST_DATE}</div>\n', unsafe_allow_html=True)
+    st.markdown(f'<div style="font-size: 9pt">BCCDC Dates: {cn.BCCDC_FIRST_DATE} to {cn.BCCDC_LAST_DATE}</div>\n', unsafe_allow_html=True)
+    st.markdown(f'<div style="font-size: 9pt">Vaccination Dates: {cn.VAX_FIRST_DATE} to {cn.VAX_LAST_DATE}</div>\n', unsafe_allow_html=True)
+    #st.markdown('#### ')
 
     st.markdown('----')
     st.markdown(f"#### Compare Canada's Largest Provinces")

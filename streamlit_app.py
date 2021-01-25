@@ -38,14 +38,27 @@ PAGES = {
 
 canada_url = f'{cn.CASES_BASE_URL}Canada.csv'
 df = pd.read_csv(canada_url)
-
 dfLast = df.tail(n=1)
 cn.LAST_DATE = dfLast['Date'].values[0]
-
 dfFirst = df.head(n=1)
 cn.FIRST_DATE = dfFirst['Date'].values[0]
-
 date_range = f'Data range: {cn.FIRST_DATE} to {cn.LAST_DATE}'
+
+# Create dataframe with all records
+dfCdc = pd.read_csv(cn.BC_REGIONAL_URL)
+dfCdc = dfCdc.sort_values(by=['Date', 'HA', 'HSDA'], ascending=[True, True, True])
+cn.BCCDC_FIRST_DATE = dfCdc.Date.values[0]
+dfCdc = dfCdc.tail(n=1)
+cn.BCCDC_LAST_DATE = dfCdc.Date.values[0]
+
+dfAdmin = pd.read_csv(cn.CANADA_VACCINATION_ADMINSTERED)
+dfAdmin['date_vaccine_administered64']= pd.to_datetime(dfAdmin['date_vaccine_administered'], format='%d-%m-%Y')
+dfFirstDate = dfAdmin.tail(n=1)
+cn.VAX_FIRST_DATE = dfFirstDate['date_vaccine_administered64'].values[0]
+cn.VAX_FIRST_DATE = np.datetime_as_string(cn.VAX_FIRST_DATE, unit='D') 
+dfLastDate = dfAdmin.head(n=1)
+cn.VAX_LAST_DATE = dfLastDate['date_vaccine_administered64'].values[0]
+cn.VAX_LAST_DATE = np.datetime_as_string(cn.VAX_LAST_DATE, unit='D')
 
 # ############################################################################
 # Entry Point
