@@ -53,10 +53,10 @@ cn.BCCDC_LAST_DATE = dfCdc.Date.values[0]
 
 dfAdmin = pd.read_csv(cn.CANADA_VACCINATION_ADMINSTERED)
 dfAdmin['date_vaccine_administered64']= pd.to_datetime(dfAdmin['date_vaccine_administered'], format='%d-%m-%Y')
-dfFirstDate = dfAdmin.tail(n=1)
+dfFirstDate = dfAdmin.head(n=1)
 cn.VAX_FIRST_DATE = dfFirstDate['date_vaccine_administered64'].values[0]
 cn.VAX_FIRST_DATE = np.datetime_as_string(cn.VAX_FIRST_DATE, unit='D') 
-dfLastDate = dfAdmin.head(n=1)
+dfLastDate = dfAdmin.tail(n=1)
 cn.VAX_LAST_DATE = dfLastDate['date_vaccine_administered64'].values[0]
 cn.VAX_LAST_DATE = np.datetime_as_string(cn.VAX_LAST_DATE, unit='D')
 
@@ -67,8 +67,8 @@ cn.VAX_LAST_DATE = np.datetime_as_string(cn.VAX_LAST_DATE, unit='D')
 def main():
     """Main function of the App"""
     st.sidebar.subheader("COVID-19")
-    st.sidebar.markdown(f'<div style="font-size: 9pt">{date_range}</div>\n', unsafe_allow_html=True)
-
+    #st.sidebar.markdown(f'<div style="font-size: 9pt">{date_range}</div>\n', unsafe_allow_html=True)
+    
     st.sidebar.subheader("Navigation")
     selection = st.sidebar.radio("Select report to view:", list(PAGES.keys()))
 

@@ -10,6 +10,8 @@
 # Global Constants
 # #######################################################################################
 
+import streamlit as st
+
 # Country files base url
 # Field Names:
 # Province_State, Country_Region, Lat, Long, Date, Confirmed, Deaths, Combined_Key, Population,
@@ -57,3 +59,8 @@ BCCDC_LAST_DATE  = ""
 
 VAX_FIRST_DATE  = ""
 VAX_LAST_DATE  = ""
+
+def DATE_SPANS():
+    st.markdown(f'<div style="font-size: 9pt">Case Dates: {FIRST_DATE} to {LAST_DATE}</div>\n', unsafe_allow_html=True)
+    st.markdown(f'<div style="font-size: 9pt">BCCDC Dates: {BCCDC_FIRST_DATE} to {BCCDC_LAST_DATE}</div>\n', unsafe_allow_html=True)
+    st.markdown(f'<div style="font-size: 9pt">Vaccination Dates: {VAX_FIRST_DATE} to {VAX_LAST_DATE}</div>\n', unsafe_allow_html=True)
