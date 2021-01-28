@@ -28,9 +28,9 @@ BC_REGIONAL_URL = 'http://www.bccdc.ca/Health-Info-Site/Documents/BCCDC_COVID19_
 
 # Canada Vaccination stats
 # "date_vaccine_administered","province","cumulative_avaccine"
-CANADA_VACCINATION_ADMINSTERED = 'https://raw.githubusercontent.com/ccodwg/Covid19Canada/master/vaccine_administration_cumulative.csv'
+CANADA_VACCINATION_ADMINSTERED = 'https://raw.githubusercontent.com/ccodwg/Covid19Canada/master/timeseries_canada/vaccine_administration_timeseries_canada.csv'
 # "date_vaccine_distributed","province","cumulative_dvaccine"
-CANADA_VACCINATION_DISTRIBUTED = 'https://raw.githubusercontent.com/ccodwg/Covid19Canada/master/vaccine_distribution_cumulative.csv'
+CANADA_VACCINATION_DISTRIBUTED = 'https://raw.githubusercontent.com/ccodwg/Covid19Canada/master/timeseries_canada/vaccine_distribution_timeseries_canada.csv'
 
 # combined_key,file_name,country,province
 # Index.csv fields
