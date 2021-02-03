@@ -283,3 +283,43 @@ def casesByHAGraph():
 
     st.pyplot(fig1)
     plt.close()
+
+    # Create dataframe with all records
+    df = pd.read_csv(cn.BC_REGIONAL_URL)
+    df = df.sort_values(by=['Date', 'HA'], ascending=[False, True])
+
+    last_date = df.Date.values[0]
+    first_date = (datetime.datetime.strptime(last_date, '%Y-%m-%d') - timedelta(days = 7)).strftime('%Y-%m-%d')
+    df = df[df['Date'] > first_date]
+    df = df[df['HA'] != 'Out of Canada']
+    df = df[df['HSDA'] != 'All']
+    df = df.drop(columns=['Cases_Reported_Smoothed', 'HSDA'])
+    df = df.sort_values(by=['HA'], ascending=[True])
+    # "Date","Province","HA","HSDA","Cases_Reported","Cases_Reported_Smoothed"
+    dfgr =  pd.DataFrame(df.groupby(['HA'], as_index=False).sum())
+
+    fig1 = plt.figure(1, figsize=(8, 8))
+
+    plt.title('Cases by Health Authority - Last Seven Days', fontsize='large')
+
+    explode = (0.1, 0.0, 0.2, 0.3, 0.0)
+    colors = ( "orange", "cyan", "brown", 
+            "grey", "indigo") 
+    
+    # Wedge properties 
+    wp = { 'linewidth' : 1, 'edgecolor' : "green" } 
+
+    # Creating autocpt arguments 
+    def func(pct, allvalues): 
+        absolute = int(pct / 100.*np.sum(allvalues)) 
+        return "{:.1f}%\n({:d} g)".format(pct, absolute) 
+    
+    unique_has = df.HA.unique()
+    
+    plt.pie(dfgr['Cases_Reported'], 
+            autopct = lambda pct: func(pct, df['Cases_Reported']), 
+            labels=unique_has,
+            explode = explode) 
+
+    st.pyplot(fig1)
+    plt.close()
