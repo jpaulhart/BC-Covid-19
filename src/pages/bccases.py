@@ -284,6 +284,8 @@ def casesByHAGraph():
     st.pyplot(fig1)
     plt.close()
 
+    st.markdown('<hr style="border-top: 5px solid #ccc; border-radius: 1px;" />', unsafe_allow_html=True)
+
     # Create dataframe with all records
     df = pd.read_csv(cn.BC_REGIONAL_URL)
     df = df.sort_values(by=['Date', 'HA'], ascending=[False, True])
