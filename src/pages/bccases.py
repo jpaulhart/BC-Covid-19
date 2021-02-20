@@ -27,16 +27,23 @@ def write():
     prov = 'British Columbia'
     
     file_name = f'{prov}.csv'.replace(' ', '%20')
+    #print(file_name)
     dfProv = pd.read_csv(f'{cn.CASES_BASE_URL}{file_name}')
+    #dfProv = dfProv.sort_values('Date', ascending=False)
+    #print(dfProv)    
     
     dfTests = pd.read_csv(cn.BC_TESTS_URL)
+    dfTests["Date"] = pd.to_datetime(dfTests["Date"]).dt.strftime('%Y-%m-%d')
+    print(dfTests)
     dfTable = dfTests.copy() 
     dfTable['New_Positives'] = dfTable['New_Tests'] * (dfTable['Positivity'] / 100)
 
     dfTable = dfTable.groupby('Date').agg({'New_Tests': 'sum', 'New_Positives': 'sum', 'Positivity': 'mean', 'Turn_Around': 'mean'})
     dfTable = dfTable.sort_values('Date', ascending=False)
+    #print(dfTable)
     dfTable = pd.merge(dfProv, dfTable, on=['Date'], how='outer')
     dfTable = dfTable.replace(np.nan,0)
+    #print(dfTable)
 
     st.markdown('<hr style="border-top: 5px solid #ccc; border-radius: 1px;" />', unsafe_allow_html=True)
     casesByDate(dfTable)
@@ -325,3 +332,26 @@ def casesByHAGraph():
 
     st.pyplot(fig1)
     plt.close()
+
+
+# Create dataframe with all records
+# df = pd.read_csv(cn.BC_CASES_URL)
+# df = df.sort_values(by=['Reported_Date', 'HA', 'Age_Group'], ascending=[True, True, True])
+# df = df.drop(columns=['Sex', 'Classification_Reported'])
+# df = df.rename(columns={"HA": "Count"})
+
+# last_date = df.tail(n=1)["Reported_Date"].values[0]
+# dt = datetime.strptime(last_date, '%Y-%m-%d').date()
+
+# dt7 = dt - timedelta(days = 7)
+# last_week = dt7.strftime("%Y-%m-%d")
+# df7 = df[df["Reported_Date"] > last_week]
+
+# dt30 = dt - timedelta(days = 30)
+# last_30 = dt30.strftime("%Y-%m-%d")
+# df30 = df[df["Reported_Date"] > last_30]
+
+# df7g = pd.DataFrame(df7.groupby(['Age_Group'], as_index=False).count())
+# df30g = pd.DataFrame(df30.groupby(['Age_Group'], as_index=False).count())
+
+# ax = df30g.plot.barh(x='Age_Group', y='Count')
