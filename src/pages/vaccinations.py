@@ -62,7 +62,7 @@ def writeProvinceGraph(dfAdmin, dfDistr, dfCompl, province):
 
     # ------------------------------------------------------------------------
 
-    st.markdown('<hr style="border-top: 8px solid #ccc; border-radius: 5px;" />', unsafe_allow_html=True)
+    st.markdown(cn.HORIZONTAL_RULE, unsafe_allow_html=True)
 
     fig1 = plt.figure(1, figsize=(8, 5))
 

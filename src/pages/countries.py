@@ -34,7 +34,7 @@ def write():
 
     for country_list in country_lists:
         country_display = ', '.join(country_list)
-        st.markdown('<hr style="border-top: 8px solid #bbb; border-radius: 5px;" />', unsafe_allow_html=True)
+        st.markdown(cn.HORIZONTAL_RULE, unsafe_allow_html=True)
         st.markdown(f'**Countries:** {country_display}')
         st.markdown('#### ')
 

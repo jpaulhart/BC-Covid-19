@@ -45,13 +45,13 @@ def write():
     dfTable = dfTable.replace(np.nan,0)
     #print(dfTable)
 
-    st.markdown('<hr style="border-top: 5px solid #ccc; border-radius: 1px;" />', unsafe_allow_html=True)
+    st.markdown(cn.HORIZONTAL_RULE, unsafe_allow_html=True)
     casesByDate(dfTable)
-    st.markdown('<hr style="border-top: 5px solid #bbb; border-radius: 1px;" />', unsafe_allow_html=True)
+    st.markdown(cn.HORIZONTAL_RULE, unsafe_allow_html=True)
     graphsByGraphs(dfProv)
-    st.markdown('<hr style="border-top: 5px solid #bbb; border-radius: 1px;" />', unsafe_allow_html=True)
+    st.markdown(cn.HORIZONTAL_RULE, unsafe_allow_html=True)
     casesByHA()
-    st.markdown('<hr style="border-top: 5px solid #bbb; border-radius: 1px;" />', unsafe_allow_html=True)
+    st.markdown(cn.HORIZONTAL_RULE, unsafe_allow_html=True)
     casesByHAGraph()
 
 #
