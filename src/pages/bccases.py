@@ -291,7 +291,7 @@ def casesByHAGraph():
     st.pyplot(fig1)
     plt.close()
 
-    st.markdown('<hr style="border-top: 5px solid #ccc; border-radius: 1px;" />', unsafe_allow_html=True)
+    st.markdown(cn.HORIZONTAL_RULE, unsafe_allow_html=True)
 
     # Create dataframe with all records
     df = pd.read_csv(cn.BC_REGIONAL_URL)
