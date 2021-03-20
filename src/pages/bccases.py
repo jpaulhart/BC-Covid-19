@@ -117,47 +117,47 @@ def graphsByGraphs(dfProv):
     #-------------------------------------------------------------------------
     # Create Confirmed New Plot
     #-------------------------------------------------------------------------
-    col1, col2 = st.beta_columns(2)
-    with col1:
+    #col1, col2 = st.beta_columns(2)
+    #with col1:
 
-        #st.markdown(f'##### New Cases')
+    #st.markdown(f'##### New Cases')
 
-        fig1 = plt.figure(1, figsize=(8, 5))
+    fig1 = plt.figure(1, figsize=(8, 5))
 
-        plt.title('New Cases - Smoothed', fontsize='large')
-        plt.xlabel="Date"
-        plt.ylabel="Number"
+    plt.title('New Cases - Smoothed', fontsize='large')
+    plt.xlabel="Date"
+    plt.ylabel="Number"
 
-        #plt.xticks(rotation=45)
-        ax = plt.gca()
-        ax.xaxis.set_major_locator(ticker.MultipleLocator(100))
+    #plt.xticks(rotation=45)
+    ax = plt.gca()
+    ax.xaxis.set_major_locator(ticker.MultipleLocator(100))
 
-        plt.plot(dfProv['Date'], dfProv['ConfirmedNewMean'], label='New Cases - Smoothed')
-        plt.grid(b=True, which='major')
-        
-        st.pyplot(fig1)
-        plt.close()
+    plt.plot(dfProv['Date'], dfProv['ConfirmedNewMean'], label='New Cases - Smoothed')
+    plt.grid(b=True, which='major')
+    
+    st.pyplot(fig1)
+    plt.close()
 
     #-------------------------------------------------------------------------
     # Create Deaths New Plot
     #-------------------------------------------------------------------------
 
-    with col2:
+    #with col2:
         
-        fig2 = plt.figure(2, figsize=(8, 5))
+    fig2 = plt.figure(2, figsize=(8, 5))
 
-        plt.title('New Deaths - Smoothed')
-        plt.xlabel="Date"
-        plt.ylabel="Number"
+    plt.title('New Deaths - Smoothed')
+    plt.xlabel="Date"
+    plt.ylabel="Number"
 
-        #plt.xticks(rotation=45)
-        ax = plt.gca()
-        ax.xaxis.set_major_locator(ticker.MultipleLocator(100))
+    #plt.xticks(rotation=45)
+    ax = plt.gca()
+    ax.xaxis.set_major_locator(ticker.MultipleLocator(100))
 
-        plt.plot(dfProv['Date'], dfProv['DeathsNewMean'], label='New Deaths - Smoothed')
-        plt.grid(b=True, which='major')
-        st.pyplot(fig2)
-        plt.close()
+    plt.plot(dfProv['Date'], dfProv['DeathsNewMean'], label='New Deaths - Smoothed')
+    plt.grid(b=True, which='major')
+    st.pyplot(fig2)
+    plt.close()
 
 #
 #  Display Cases by Health Authority
