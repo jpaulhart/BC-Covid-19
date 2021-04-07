@@ -51,10 +51,85 @@ def write():
     st.title("Vaccinations by Day")
     cn.DATE_SPANS()
 
+    writeProvinceAdmin(dfAdmin, dfDistr, dfCompl)
+
     writeProvinceGraph(dfAdmin, dfDistr, dfCompl, 'BC')
     writeProvinceGraph(dfAdmin, dfDistr, dfCompl, 'Alberta')
     writeProvinceGraph(dfAdmin, dfDistr, dfCompl, 'Ontario')
     writeProvinceGraph(dfAdmin, dfDistr, dfCompl, 'Quebec')
+
+def writeProvinceAdmin(dfAdmin, dfDistr, dfCompl):
+
+    st.markdown(cn.HORIZONTAL_RULE, unsafe_allow_html=True)
+
+    prov_pop = {
+        "Canada":           38048738,
+        "NL":               520438,
+        "PEI":              159819,
+        "Nova Scotia":      979449,
+        "New Brunswick":    782078,
+        "Quebec":           8575944,
+        "Ontario":          14755211,
+        "Manitoba":         1380935,
+        "Saskatchewan":     1178832,
+        "Alberta":          4436258,
+        "BC":               5153039,
+        "Yukon":            42192,
+        "NWT":              45136,
+        "Nunavut":          39407
+    }
+
+    dfLastOne = dfAdmin.tail(1)
+    lastDate = dfLastOne['date_vaccine_administered64'].values[0]
+    dfLastDates = dfAdmin[dfAdmin['date_vaccine_administered64'] == lastDate]
+
+    provinces = []
+    admin_pers = []
+    all_accum = 0
+    for index, row in dfLastDates.iterrows():
+        province = row['province']
+        admin_total = row['cumulative_avaccine']
+        population = prov_pop[province]
+        admin_per = admin_total / (population / 100)
+        provinces.append(province)
+        admin_pers.append(admin_per)
+        all_accum += admin_total
+
+    ca_pop = prov_pop['Canada']
+    admin_per = all_accum / (ca_pop / 100)
+    provinces.append('Canada')
+    admin_pers.append(admin_per)
+
+    dataCols = {'provinces':  provinces,
+                'admin_percent': admin_pers
+            }
+
+    df = pd.DataFrame (dataCols, columns = ['provinces','admin_percent'])
+    df = df.sort_values(['admin_percent'], ascending=[True])
+    #print (df)
+
+    fig1 = plt.figure(1, figsize=(8, 5))
+
+    plt.title('Vaccinations Administered - Percent of Pop.', fontsize='large')
+    plt.xlabel="Percent"
+    plt.ylabel="Province"
+    plt.xticks(fontsize=8)
+    plt.yticks(fontsize=8)
+    #plt.ylabel("Calories Burned Per Day", fontsize=14, labelpad=15)
+
+    #plt.xticks(rotation=45)
+    ax = plt.gca()
+    ax.barh(df['provinces'], df['admin_percent'], align='center',
+            color='green', ecolor='black')
+
+    #ax.xaxis.set_major_locator(ticker.MultipleLocator(100))
+
+    #plt.plot(df['admin_percent'], df['provinces'], label='Percent Administered')
+    plt.grid(b=True, which='major')
+
+    st.pyplot(fig1)
+    #plt.show()
+    plt.close()
 
 def writeProvinceGraph(dfAdmin, dfDistr, dfCompl, province):
     dfAdmin = dfAdmin[dfAdmin['province'] == f'{province}']
