@@ -29,6 +29,7 @@ def write():
     file_name = f'{prov}.csv'.replace(' ', '%20')
     #print(file_name)
     dfProv = pd.read_csv(f'{cn.CASES_BASE_URL}{file_name}')
+    dfProv = fixBCCases(dfProv)
     #dfProv = dfProv.sort_values('Date', ascending=False)
     #print(dfProv)    
     
@@ -53,6 +54,33 @@ def write():
     casesByHA()
     st.markdown(cn.HORIZONTAL_RULE, unsafe_allow_html=True)
     casesByHAGraph()
+
+def fixBCCases(dfProv):
+    zeroCount = 0
+    zeroIndices = []
+    for index, row in dfProv.iterrows():
+        if row['Date'] >= '2020-07-01':
+            if row['ConfirmedNew'] == 0:
+                zeroCount += 1
+                zeroIndices.append(index)
+            elif zeroCount > 1:
+                mondayCases = row['ConfirmedNew']
+                eachDay = mondayCases // (zeroCount + 1)
+                diff = mondayCases - (eachDay * (zeroCount + 1))
+                print(f"Zero count: {zeroCount}, Monday: {mondayCases}, Each day: {eachDay}, Diff: {diff}")
+                print(f"Indices: {zeroIndices}")
+                dfProv.at[index, 'ConfirmedNew'] = eachDay + diff
+                index = 0
+                for i in zeroIndices:
+                    print("Index: {i}, {zeroIndices}")
+                    dfProv.at[i, 'ConfirmedNew'] = eachDay
+                    index += 1
+                zeroCount = 0
+                zeroIndices = []    
+    
+    dfProv['ConfirmedNewMean'] = dfProv['ConfirmedNew'].rolling(7).mean()
+
+    return dfProv
 
 #
 #  Display Cases by date
