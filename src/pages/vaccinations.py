@@ -122,6 +122,9 @@ def writeProvinceAdmin(dfAdmin, dfDistr, dfCompl):
     ax.barh(df['provinces'], df['admin_percent'], align='center',
             color='green', ecolor='black')
 
+    for i, v in enumerate(df['admin_percent']):
+        ax.text(v - 3, i - .25, str("{:10.2f}".format(v)), color='green', fontweight='bold')
+
     #ax.xaxis.set_major_locator(ticker.MultipleLocator(100))
 
     #plt.plot(df['admin_percent'], df['provinces'], label='Percent Administered')
