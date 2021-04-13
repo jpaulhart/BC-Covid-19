@@ -54,9 +54,9 @@ def write():
     writeProvinceAdmin(dfAdmin, dfDistr, dfCompl)
 
     writeProvinceGraph(dfAdmin, dfDistr, dfCompl, 'BC')
-    writeProvinceGraph(dfAdmin, dfDistr, dfCompl, 'Alberta')
-    writeProvinceGraph(dfAdmin, dfDistr, dfCompl, 'Ontario')
-    writeProvinceGraph(dfAdmin, dfDistr, dfCompl, 'Quebec')
+    #writeProvinceGraph(dfAdmin, dfDistr, dfCompl, 'Alberta')
+    #writeProvinceGraph(dfAdmin, dfDistr, dfCompl, 'Ontario')
+    #writeProvinceGraph(dfAdmin, dfDistr, dfCompl, 'Quebec')
 
 def writeProvinceAdmin(dfAdmin, dfDistr, dfCompl):
 
