@@ -50,13 +50,13 @@ def write():
     st.markdown(cn.HORIZONTAL_RULE, unsafe_allow_html=True)
     casesByDate(dfTable)
     st.markdown(cn.HORIZONTAL_RULE, unsafe_allow_html=True)
+    casesByAge()
+    st.markdown(cn.HORIZONTAL_RULE, unsafe_allow_html=True)
     graphsByGraphs(dfProv)
     st.markdown(cn.HORIZONTAL_RULE, unsafe_allow_html=True)
     casesByHA()
     st.markdown(cn.HORIZONTAL_RULE, unsafe_allow_html=True)
     casesByHAGraph()
-    st.markdown(cn.HORIZONTAL_RULE, unsafe_allow_html=True)
-    casesByAge()
 
 def fixBCCases(dfProv):
     zeroCount = 0
