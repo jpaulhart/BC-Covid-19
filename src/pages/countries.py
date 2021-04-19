@@ -40,51 +40,51 @@ def write():
 
         col1, col2 = st.beta_columns(2)
 
-        with col1:
+        #with col1:
 
-            fig1 = plt.figure(1, figsize=(8, 5))
+        fig1 = plt.figure(1, figsize=(8, 5))
 
-            plt.title('New Confirmed Cases', fontsize='large')
-            plt.xlabel="Date"
-            plt.ylabel="Number"
+        plt.title('New Confirmed Cases', fontsize='large')
+        plt.xlabel="Date"
+        plt.ylabel="Number"
 
-            #plt.xticks(rotation=45)
-            ax = plt.gca()
-            ax.xaxis.set_major_locator(ticker.MultipleLocator(75))
+        #plt.xticks(rotation=45)
+        ax = plt.gca()
+        ax.xaxis.set_major_locator(ticker.MultipleLocator(75))
 
-            for cty in country_list:
-                file_name = cty + '.csv'
-                file_url = f'{cn.CASES_BASE_URL}{file_name.replace(" ", "%20")}'
-                df = pd.read_csv(file_url)
-                plt.plot(df['Date'], df['ConfirmedNewMean'], label=df['Country_Region'])
+        for cty in country_list:
+            file_name = cty + '.csv'
+            file_url = f'{cn.CASES_BASE_URL}{file_name.replace(" ", "%20")}'
+            df = pd.read_csv(file_url)
+            plt.plot(df['Date'], df['ConfirmedNewMean'], label=df['Country_Region'])
 
-            # Add a legend
-            plt.legend(country_list)
-            plt.grid(b=True, which='major')
-            st.pyplot(fig1)
-            plt.close()
+        # Add a legend
+        plt.legend(country_list)
+        plt.grid(b=True, which='major')
+        st.pyplot(fig1)
+        plt.close()
 
-        with col2:
-            fig1 = plt.figure(1, figsize=(8, 5))
+        #with col2:
+        fig1 = plt.figure(1, figsize=(8, 5))
 
-            plt.title('New Deaths', fontsize='large')
-            plt.xlabel="Date"
-            plt.ylabel="Number"
+        plt.title('New Deaths', fontsize='large')
+        plt.xlabel="Date"
+        plt.ylabel="Number"
 
-            #plt.xticks(rotation=45)
-            ax = plt.gca()
-            ax.xaxis.set_major_locator(ticker.MultipleLocator(75))
+        #plt.xticks(rotation=45)
+        ax = plt.gca()
+        ax.xaxis.set_major_locator(ticker.MultipleLocator(75))
 
-            for cty in country_list:
-                file_name = cty + '.csv'
-                file_url = f'{cn.CASES_BASE_URL}{file_name.replace(" ", "%20")}'
-                df = pd.read_csv(file_url)
-                #df['Date']= pd.to_datetime(df['Date'])
-                plt.plot(df['Date'], df['DeathsNewMean'], label=df['Country_Region'])
+        for cty in country_list:
+            file_name = cty + '.csv'
+            file_url = f'{cn.CASES_BASE_URL}{file_name.replace(" ", "%20")}'
+            df = pd.read_csv(file_url)
+            #df['Date']= pd.to_datetime(df['Date'])
+            plt.plot(df['Date'], df['DeathsNewMean'], label=df['Country_Region'])
 
-            # Add a legend
-            plt.legend(country_list)
-            plt.grid(b=True, which='major')
-            st.pyplot(fig1)
-            plt.close()
+        # Add a legend
+        plt.legend(country_list)
+        plt.grid(b=True, which='major')
+        st.pyplot(fig1)
+        plt.close()
 
