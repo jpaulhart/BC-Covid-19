@@ -53,8 +53,8 @@ def write():
     casesByAge()
     st.markdown(cn.HORIZONTAL_RULE, unsafe_allow_html=True)
     graphsByGraphs(dfProv)
-    st.markdown(cn.HORIZONTAL_RULE, unsafe_allow_html=True)
-    casesByHA()
+    #st.markdown(cn.HORIZONTAL_RULE, unsafe_allow_html=True)
+    #casesByHA()
     st.markdown(cn.HORIZONTAL_RULE, unsafe_allow_html=True)
     casesByHAGraph()
 
