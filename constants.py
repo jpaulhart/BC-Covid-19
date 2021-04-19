@@ -36,6 +36,8 @@ CANADA_VACCINATION_COMPLETED = 'https://raw.githubusercontent.com/ccodwg/Covid19
 # "date_vaccine_distributed","province","cumulative_dvaccine"
 CANADA_VACCINATION_DISTRIBUTED = 'https://raw.githubusercontent.com/ccodwg/Covid19Canada/master/timeseries_prov/vaccine_distribution_timeseries_prov.csv'
 
+COUNTRY_DATA = 'https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv'
+
 # Horizontal Rule
 HORIZONTAL_RULE = '<hr style="border-top: 5px solid #F63366; border-radius: 5px;" />'
 
