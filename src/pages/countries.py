@@ -30,7 +30,7 @@ def write():
                      ['Italy', 'Spain', 'Portugal', 'France'],
                      ['Oman','Jordan','Morocco','Tunisia', 'Algeria'],
                      ['Thailand','Cambodia','Vietnam'],
-                     ['Indonesia'],
+                     ['Argentina','Chile','Uruguay'],
     ]        
 
     for country_list in country_lists:
