@@ -101,8 +101,10 @@ def casesByDate(dfProv):
     # Table of details for last week 
     cases_data = '<div style="font-size: 9pt">\n'
     cases_data += '<table border=1>\n'
-    cases_data += '<tr><th> </th><th colspan=2 style="text-align:center">Cases</th><th colspan=2 style="text-align:center">Deaths</th><th colspan=4 style="text-align:center">Testing</th></tr>\n'
-    cases_data += '<tr><th>Date</th><th>Total</th><th>New</th><th>Total</th><th>New</th><th>New</th><th>Positives</th><th>% Pos.</th><th>Hours</th></tr>\n'
+    # cases_data += '<tr><th> </th><th colspan=2 style="text-align:center">Cases</th><th colspan=2 style="text-align:center">Deaths</th><th colspan=4 style="text-align:center">Testing</th></tr>\n'
+    # cases_data += '<tr><th>Date</th><th>Total</th><th>New</th><th>Total</th><th>New</th><th>New</th><th>Positives</th><th>% Pos.</th><th>Hours</th></tr>\n'
+    cases_data += '<tr><th> </th><th colspan=2 style="text-align:center">Cases</th><th colspan=2 style="text-align:center">Deaths</th></tr>\n'
+    cases_data += '<tr><th>Date</th><th>Total</th><th>New</th><th>Total</th><th>New</th></tr>\n'
     #cases_data += '| :----- | ----------: | --------: | -----------: | ---------: |\n'
     row_count = 0
     dfSorted = dfProv.sort_values(['Date'], ascending=False)
@@ -138,10 +140,10 @@ def casesByDate(dfProv):
         cases_data += f'<td style="text-align:right">{confirmedNew}</td>'
         cases_data += f'<td style="text-align:right">{deaths}</td>'
         cases_data += f'<td style="text-align:right">{deathsNew}</td>'
-        cases_data += f'<td style="text-align:right">{newTests}</td>'
-        cases_data += f'<td style="text-align:right">{newPositives}</td>'
-        cases_data += f'<td style="text-align:right">{positivity}%</td>'
-        cases_data += f'<td style="text-align:right">{turnAround}</td>'
+        # cases_data += f'<td style="text-align:right">{newTests}</td>'
+        # cases_data += f'<td style="text-align:right">{newPositives}</td>'
+        # cases_data += f'<td style="text-align:right">{positivity}%</td>'
+        # cases_data += f'<td style="text-align:right">{turnAround}</td>'
         cases_data += f'</tr>' + '\n'
         row_count += 1
         if row_count >= 10:
