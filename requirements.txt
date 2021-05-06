@@ -3,5 +3,5 @@ matplotlib==3.3.2
 streamlit==0.80
 numpy==1.18.5
 awesome_streamlit==20200728.1
-xlrd=2.0
+xlrd==2.0
 openpyxl==3.0
