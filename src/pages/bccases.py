@@ -31,27 +31,28 @@ def write():
     print('Case file:', file_name)
     dfProv = pd.read_csv(f'{cn.CASES_BASE_URL}{file_name}')
     dfProv = fixBCCases(dfProv)
+    dfProv = dfProv.replace(np.nan,0)
     #dfProv = dfProv.sort_values('Date', ascending=False)
     #print(dfProv)    
     
-    print('Test file:', cn.BC_TESTS_URL)
-    dfTests = pd.read_excel(cn.BC_TESTS_URL)
-    print('Test file:', cn.BC_TESTS_URL, 'loaded')
-    dfTests["Date"] = pd.to_datetime(dfTests["Date"]).dt.strftime('%Y-%m-%d')
-    #print(dfTests)
-    dfTable = dfTests.copy() 
-    dfTable['New_Positives'] = dfTable['New_Tests'] * (dfTable['Positivity'] / 100)
+    # print('Test file:', cn.BC_TESTS_URL)
+    # dfTests = pd.read_excel(cn.BC_TESTS_URL)
+    # print('Test file:', cn.BC_TESTS_URL, 'loaded')
+    # dfTests["Date"] = pd.to_datetime(dfTests["Date"]).dt.strftime('%Y-%m-%d')
+    # #print(dfTests)
+    # dfTable = dfTests.copy() 
+    # dfTable['New_Positives'] = dfTable['New_Tests'] * (dfTable['Positivity'] / 100)
 
-    dfTable = dfTable.groupby('Date').agg({'New_Tests': 'sum', 'New_Positives': 'sum', 'Positivity': 'mean', 'Turn_Around': 'mean'})
-    dfTable = dfTable.sort_values('Date', ascending=False)
-    #print(dfTable)
-    print('Merging dataframes')
-    dfTable = pd.merge(dfProv, dfTable, on=['Date'], how='outer')
-    dfTable = dfTable.replace(np.nan,0)
+    # dfTable = dfTable.groupby('Date').agg({'New_Tests': 'sum', 'New_Positives': 'sum', 'Positivity': 'mean', 'Turn_Around': 'mean'})
+    # dfTable = dfTable.sort_values('Date', ascending=False)
+    # #print(dfTable)
+    # print('Merging dataframes')
+    # dfTable = pd.merge(dfProv, dfTable, on=['Date'], how='outer')
+    # dfTable = dfTable.replace(np.nan,0)
     #print(dfTable)
 
     st.markdown(cn.HORIZONTAL_RULE, unsafe_allow_html=True)
-    casesByDate(dfTable)
+    casesByDate(dfProv)
     st.markdown(cn.HORIZONTAL_RULE, unsafe_allow_html=True)
     casesByAge()
     st.markdown(cn.HORIZONTAL_RULE, unsafe_allow_html=True)
@@ -116,13 +117,21 @@ def casesByDate(dfProv):
         deathsNew = row['DeathsNew']
         deathsNew = "{:,}".format(deathsNew)
         #New_Tests  New_Positives  Positivity  Turn_Around
-        newTests = row['New_Tests']
+        # newTests = row['New_Tests']
+        # newTests = "{:,.0f}".format(newTests)
+        # newPositives = row['New_Positives']
+        # newPositives = "{:,.0f}".format(newPositives)
+        # positivity = row['Positivity']
+        # positivity = "{:.1f}".format(positivity)
+        # turnAround = row['Turn_Around']
+        # turnAround = "{:.1f}".format(turnAround)
+        newTests = 0
         newTests = "{:,.0f}".format(newTests)
-        newPositives = row['New_Positives']
+        newPositives = 0
         newPositives = "{:,.0f}".format(newPositives)
-        positivity = row['Positivity']
+        positivity = 0
         positivity = "{:.1f}".format(positivity)
-        turnAround = row['Turn_Around']
+        turnAround = 0
         turnAround = "{:.1f}".format(turnAround)
         cases_data += f'<tr>'
         cases_data += f'<td nowrap>{date}</td><td style="text-align:right">{confirmed}</td>'
