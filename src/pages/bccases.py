@@ -28,21 +28,24 @@ def write():
     prov = 'British Columbia'
     
     file_name = f'{prov}.csv'.replace(' ', '%20')
-    #print(file_name)
+    print('Case file:', file_name)
     dfProv = pd.read_csv(f'{cn.CASES_BASE_URL}{file_name}')
     dfProv = fixBCCases(dfProv)
     #dfProv = dfProv.sort_values('Date', ascending=False)
     #print(dfProv)    
     
-    dfTests = pd.read_csv(cn.BC_TESTS_URL)
+    print('Test file:', cn.BC_TESTS_URL)
+    dfTests = pd.read_excel(cn.BC_TESTS_URL)
+    print('Test file:', cn.BC_TESTS_URL, 'loaded')
     dfTests["Date"] = pd.to_datetime(dfTests["Date"]).dt.strftime('%Y-%m-%d')
-    print(dfTests)
+    #print(dfTests)
     dfTable = dfTests.copy() 
     dfTable['New_Positives'] = dfTable['New_Tests'] * (dfTable['Positivity'] / 100)
 
     dfTable = dfTable.groupby('Date').agg({'New_Tests': 'sum', 'New_Positives': 'sum', 'Positivity': 'mean', 'Turn_Around': 'mean'})
     dfTable = dfTable.sort_values('Date', ascending=False)
     #print(dfTable)
+    print('Merging dataframes')
     dfTable = pd.merge(dfProv, dfTable, on=['Date'], how='outer')
     dfTable = dfTable.replace(np.nan,0)
     #print(dfTable)
@@ -70,12 +73,12 @@ def fixBCCases(dfProv):
                 mondayCases = row['ConfirmedNew']
                 eachDay = mondayCases // (zeroCount + 1)
                 diff = mondayCases - (eachDay * (zeroCount + 1))
-                print(f"Zero count: {zeroCount}, Monday: {mondayCases}, Each day: {eachDay}, Diff: {diff}")
-                print(f"Indices: {zeroIndices}")
+                #print(f"Zero count: {zeroCount}, Monday: {mondayCases}, Each day: {eachDay}, Diff: {diff}")
+                #print(f"Indices: {zeroIndices}")
                 dfProv.at[index, 'ConfirmedNew'] = eachDay + diff
                 index = 0
                 for i in zeroIndices:
-                    print("Index: {i}, {zeroIndices}")
+                    #print("Index: {i}, {zeroIndices}")
                     dfProv.at[i, 'ConfirmedNew'] = eachDay
                     index += 1
                 zeroCount = 0

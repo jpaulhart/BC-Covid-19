@@ -22,7 +22,9 @@ CASES_BASE_URL = 'https://raw.githubusercontent.com/jpaulhart/BC-Covid-19-Data/m
 # BC CDC testing data locations
 # Field Names:
 # "Date", "Region", "New_Tests", "Total_Tests", "Positivity", "Turn_Around"
-BC_TESTS_URL = 'http://www.bccdc.ca/Health-Info-Site/Documents/BCCDC_COVID19_Dashboard_Lab_Information.csv'
+#BC_TESTS_URL = 'http://www.bccdc.ca/Health-Info-Site/Documents/BCCDC_COVID19_Dashboard_Lab_Information.csv'
+BC_TESTS_URL = 'http://www.bccdc.ca/Health-Info-Site/Documents/BCCDC_COVID19_Dashboard_Lab_Information.xlsx'
+
 # "Reported_Date","HA","Sex","Age_Group","Classification_Reported"
 BC_CASES_URL = 'http://www.bccdc.ca/Health-Info-Site/Documents/BCCDC_COVID19_Dashboard_Case_Details.csv'
 # "Date","Province","HA","HSDA","Cases_Reported","Cases_Reported_Smoothed"

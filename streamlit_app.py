@@ -72,7 +72,9 @@ def main():
     st.sidebar.subheader("Navigation")
     selection = st.sidebar.radio("Select report to view:", list(PAGES.keys()))
 
+    #print('--------------- Selection before')
     page = PAGES[selection]
+    #print(f'--------------- Selection:', {page})
 
     with st.spinner(f"Loading {selection} ..."):
         ast.shared.components.write_page(page)
