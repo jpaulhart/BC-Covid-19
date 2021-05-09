@@ -149,7 +149,7 @@ def writeProvinceGraph(dfAdmin, dfDistr, dfCompl, province):
     plt.ylabel="Number"
 
     ax = plt.gca()
-    ax.xaxis.set_major_locator(ticker.MultipleLocator(20))
+    ax.xaxis.set_major_locator(ticker.MultipleLocator(50))
 
     plt.bar(dfDistr['date_vaccine_distributed'], dfDistr['cumulative_dvaccine'], label=f'{province} Vaccines Distributed')
     plt.bar(dfAdmin['date_vaccine_administered'], dfAdmin['cumulative_avaccine'], label=f'{province} Vaccines Administered')
