@@ -27,7 +27,10 @@ def write():
 
     country_lists = [['Canada'],
                      ['US'],
-                     ['Italy', 'Spain', 'Portugal', 'France'],
+                     ['Italy'], 
+                     ['Spain'], 
+                     ['Portugal'], 
+                     ['France'],
                      ['Oman','Jordan','Morocco','Tunisia', 'Algeria'],
                      ['Thailand','Cambodia','Vietnam'],
                      ['Argentina','Chile','Uruguay'],
