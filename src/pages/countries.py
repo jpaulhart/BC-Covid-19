@@ -93,3 +93,38 @@ def write():
             st.pyplot(fig1)
             plt.close()
 
+    # Detail trend report for select countries
+    for country_list in country_lists:
+        print(f"Countries: {len(country_list)}, Country List: {country_list}")
+        if len(country_list) != 1:
+            return
+
+        country_display = ', '.join(country_list)
+        st.markdown(cn.HORIZONTAL_RULE, unsafe_allow_html=True)
+        st.markdown(f'**Country:** {country_display}')
+        st.markdown('#### ')
+
+        fig2 = plt.figure(1, figsize=(8, 5))
+
+        plt.title('New Confirmed Cases', fontsize='large')
+        plt.xlabel="Date"
+        plt.ylabel="Number"
+
+        #plt.xticks(rotation=45)
+        ax = plt.gca()
+        ax.xaxis.set_major_locator(ticker.MultipleLocator(5))
+
+        for cty in country_list:
+            file_name = cty + '.csv'
+            file_url = f'{cn.CASES_BASE_URL}{file_name.replace(" ", "%20")}'
+            df = pd.read_csv(file_url)
+            df = df.tail(20)
+            plt.plot(df['Date'], df['ConfirmedNewMean'], label=df['Country_Region'], color = 'green')
+            plt.bar(df['Date'], df['ConfirmedNew'], label=df['Country_Region'], color = 'lightseagreen')
+
+        # Add a legend
+        plt.legend(country_list)
+        plt.grid(b=True, which='major')
+        st.pyplot(fig2)
+        plt.close()
+
