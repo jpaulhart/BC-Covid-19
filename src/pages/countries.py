@@ -106,7 +106,7 @@ def write():
 
         fig2 = plt.figure(1, figsize=(8, 5))
 
-        plt.title('New Confirmed Cases', fontsize='large')
+        plt.title('New Confirmed Cases - Last 20 Days', fontsize='large')
         plt.xlabel="Date"
         plt.ylabel="Number"
 
