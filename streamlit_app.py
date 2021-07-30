@@ -20,6 +20,7 @@ import src.pages.about
 import src.pages.bccases
 import src.pages.countries
 import src.pages.provinces
+import src.pages.recents
 import src.pages.vaccinations
 
 ast.core.services.other.set_logging_format()
@@ -29,6 +30,7 @@ PAGES = {
     "Vaccinations": src.pages.vaccinations,
     "Provinces": src.pages.provinces,
     "Countries": src.pages.countries,
+    "Recents": src.pages.recents,
     "About": src.pages.about,
 }
 
