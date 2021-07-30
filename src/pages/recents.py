@@ -63,7 +63,7 @@ def write():
             file_url = f'{cn.CASES_BASE_URL}{file_name.replace(" ", "%20")}'
             df = pd.read_csv(file_url)
             df = df.tail(20)
-            plt.plot(df['Date'], df['ConfirmedNewMean'], label=df['Country_Region'], color = 'green')
+            plt.plot(df['Date'], df['ConfirmedNewMean'], label=df['Country_Region'], linewidth=2, color = 'darkslategrey')
             plt.bar(df['Date'], df['ConfirmedNew'], label=df['Country_Region'], color = 'lightseagreen')
 
         # Add a legend
