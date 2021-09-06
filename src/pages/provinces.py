@@ -48,7 +48,7 @@ def write():
     dfqu['ConfirmedNewPer1M'] = dfqu['ConfirmedNewMean'] / cn.PROV_POP['AL']
     dfqu['DeathsNewPer1M']    = dfqu['DeathsNewMean'] / cn.PROV_POP['AL']
 
-    col1, col2 = st.beta_columns(2)
+    col1, col2 = st.columns(2)
 
     #-------------------------------------------------------------------------
     # Create Confirmed New Plot
