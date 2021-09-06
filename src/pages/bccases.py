@@ -162,7 +162,7 @@ def graphsByGraphs(dfProv):
     #-------------------------------------------------------------------------
     # Create Confirmed New Plot
     #-------------------------------------------------------------------------
-    #col1, col2 = st.beta_columns(2)
+    #col1, col2 = st.columns(2)
     #with col1:
 
     #st.markdown(f'##### New Cases')
@@ -268,7 +268,11 @@ def casesByHA():
                 casex_total = row['Cases_Reported_x']
                 casey_total = row['Cases_Reported_y']
                 cx = row['Cases_Reported_x']
-                cpx = (cx / casex_total) * 100
+                try:
+                    cpx = (cx / casex_total) * 100
+                except:
+                    print("BCCases.py line 272 error")
+                    cpx = 0
                 casex_percent = f"<b>" + '{:.2f}'.format(cpx) + '%</b>'
                 total_casex_percent = f"<b>" + '{:.2f}'.format((row['Cases_Reported_x'] /  all_casex_total) * 100) + '%</b>'
                 cy = row['Cases_Reported_y']
