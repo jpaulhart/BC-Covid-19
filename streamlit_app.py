@@ -19,6 +19,7 @@ import constants as cn
 import src.pages.about
 import src.pages.bccases
 import src.pages.countries
+import src.pages.itcases
 import src.pages.provinces
 import src.pages.recents
 import src.pages.vaccinations
@@ -27,6 +28,7 @@ ast.core.services.other.set_logging_format()
 
 PAGES = {
     "B.C. Cases": src.pages.bccases,
+    "Italy Cases": src.pages.itcases,
     "Vaccinations": src.pages.vaccinations,
     "Provinces": src.pages.provinces,
     "Countries": src.pages.countries,

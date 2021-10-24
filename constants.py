@@ -40,6 +40,8 @@ CANADA_VACCINATION_DISTRIBUTED = 'https://raw.githubusercontent.com/ccodwg/Covid
 
 COUNTRY_DATA = 'https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv'
 
+ITALY_DATA = 'https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv'
+
 # Horizontal Rule
 HORIZONTAL_RULE = '<hr style="border-top: 5px solid #F63366; border-radius: 5px;" />'
 
