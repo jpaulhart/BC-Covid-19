@@ -28,13 +28,13 @@ def write():
     st.markdown(cn.HORIZONTAL_RULE, unsafe_allow_html=True)
 
     regions = [
+        "Lazio",      # 12
+        "Puglia",     # 16
+        "Sicilia",    # 19
         "Basilicata", # 17
         "Calabria",   # 18
         "Campania",   # 15
-        "Lazio",      # 12
-        "Puglia",     # 16
         "Sardegna",   # 20
-        "Sicilia",    # 19
         "Umbria"      # 19
     ] 
 
