@@ -62,7 +62,8 @@ def write():
         dfLast = dfRegion.tail(1)
         lastDate = dfLast["data"]
         cn.ITALY_LAST_DATE = lastDate
-
+        cn.DATE_SPANS()
+        
         fig1 = plt.figure(1, figsize=(8, 5))
 
         plt.title(f'{region} - New Cases and New Deaths', fontsize='large')
