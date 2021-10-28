@@ -72,7 +72,7 @@ VAX_FIRST_DATE  = ""
 VAX_LAST_DATE  = ""
 
 ITALY_FIRST_DATE  = ""
-ITALY_LAST_DATE  = ""
+ITALY_LAST_DATE  = "
 
 def DATE_SPANS():
     #st.markdown(f'<div style="font-size: 9pt">Case Dates: {FIRST_DATE} to {LAST_DATE}</div>\n', unsafe_allow_html=True)
@@ -80,7 +80,7 @@ def DATE_SPANS():
     #st.markdown(f'<div style="font-size: 9pt">Vaccination Dates: {VAX_FIRST_DATE} to {VAX_LAST_DATE}</div>\n', unsafe_allow_html=True)
     table_rows =  '<div style="font-size: 9pt">\n'
     table_rows += '<table cellspacing=0 cellpadding=0 style="border:0px;">\n'
-    table_rows += f'<tr><td>Case&nbsp;Data:<br />BCCDC&nbsp;Data:<br />BC&nbsp;Vaccination&nbsp;Data:&nbsp;Italy&nbsp;Data:<td width="100%">{FIRST_DATE} to {LAST_DATE}<br />{BCCDC_FIRST_DATE} to {BCCDC_LAST_DATE}<br/>{VAX_FIRST_DATE} to {VAX_LAST_DATE}<br/>{ITALY_FIRST_DATE} to {ITALY_LAST_DATE}</td></tr>'
+    table_rows += f'<tr><td>Case&nbsp;Data:<br />BCCDC&nbsp;Data:<br />BC&nbsp;Vaccination&nbsp;Data:<br />&nbsp;Italy&nbsp;Data:<td width="100%">{FIRST_DATE} to {LAST_DATE}<br />{BCCDC_FIRST_DATE} to {BCCDC_LAST_DATE}<br/>{VAX_FIRST_DATE} to {VAX_LAST_DATE}<br/>{ITALY_FIRST_DATE} to {ITALY_LAST_DATE}</td></tr>'
     table_rows += '</table>\n'
     table_rows += '</div>\n'
     st.markdown(table_rows, unsafe_allow_html=True)
