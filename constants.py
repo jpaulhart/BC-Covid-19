@@ -72,7 +72,7 @@ VAX_FIRST_DATE  = ""
 VAX_LAST_DATE  = ""
 
 ITALY_FIRST_DATE  = ""
-ITALY_LAST_DATE  = "
+ITALY_LAST_DATE  = ""
 
 def DATE_SPANS():
     #st.markdown(f'<div style="font-size: 9pt">Case Dates: {FIRST_DATE} to {LAST_DATE}</div>\n', unsafe_allow_html=True)
