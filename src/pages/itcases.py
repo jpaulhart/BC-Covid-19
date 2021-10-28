@@ -39,6 +39,7 @@ def write():
     ] 
 
     df = pd.read_csv(cn.ITALY_DATA)
+    df['data'] = df['data'].map(lambda x: x[0:10])
 
     regionCount = 0
     for region in regions:
@@ -53,7 +54,12 @@ def write():
         dfRegion = dfRegion.tail(40)
         dfRegion["rolling"] = dfRegion["nuovi_positivi"].rolling(10).mean()
         dfRegion = dfRegion.tail(30)
-        dfRegion['data'] = dfRegion['data'].map(lambda x: x[0:10])
+        dfFirst = dfRegion.head(1)
+        firstDate = dfFirst.iloc[0]["data"]
+        cn.ITALY_FIRST_DATE = firstDate
+        dfLast = dfRegion.tail(1)
+        lastDate = dfLast.iloc[0]["data"]
+        cn.ITALY_LAST_DATE = lastDate
 
         fig1 = plt.figure(1, figsize=(8, 5))
 
