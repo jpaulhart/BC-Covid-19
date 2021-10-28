@@ -56,11 +56,11 @@ def write():
         dfRegion = dfRegion.tail(30)
            
         dfFirst = dfRegion.head(1)
-        firstDate = dfFirst.iloc[0]["data"]
+        firstDate = dfFirst["data"]
         cn.ITALY_FIRST_DATE = firstDate
         
         dfLast = dfRegion.tail(1)
-        lastDate = dfLast.iloc[0]["data"]
+        lastDate = dfLast["data"]
         cn.ITALY_LAST_DATE = lastDate
 
         fig1 = plt.figure(1, figsize=(8, 5))
