@@ -50,7 +50,7 @@ def write():
         df['Rolling'] = df['Price'].rolling(5).mean()
         print(df.head(10))
         '''
-
+ 
         dfRegion = dfRegion.tail(40)
         dfRegion["rolling"] = dfRegion["nuovi_positivi"].rolling(10).mean()
         dfRegion = dfRegion.tail(30)
