@@ -66,10 +66,10 @@ def write():
         # cn.ITALY_LAST_DATE = lastDate
         # cn.DATE_SPANS()
 
-        st.write(f"Dates: {first_data} - {last_data}")
+        #st.write(f"Dates: {first_data} - {last_data}")
         fig1 = plt.figure(1, figsize=(8, 5))
 
-        plt.title(f'{region} - New Cases and New Deaths - {first_data} - {last_data}', fontsize='large')
+        plt.title(f'{region}: New Cases and New Deaths - {first_data} - {last_data}', fontsize='large')
         plt.xlabel="Date"
         plt.ylabel="Number"
 
