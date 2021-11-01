@@ -55,8 +55,8 @@ def write():
         dfRegion = dfRegion.tail(40)
         dfRegion["rolling"] = dfRegion["nuovi_positivi"].rolling(10).mean()
         dfRegion = dfRegion.tail(30)
-        first_data = dfRegion.head(1)["data"]       
-        last_data = dfRegion.tail(1)["data"]       
+        first_data = dfRegion.head(1)["data"].values[0]       
+        last_data = dfRegion.tail(1)["data"].values[0]       
         # dfFirst = dfRegion.head(1)
         # firstDate = dfFirst.iloc[0]["data"]
         # cn.ITALY_FIRST_DATE = firstDate
