@@ -56,7 +56,7 @@ def write():
 
             #plt.xticks(rotation=45)
             ax = plt.gca()
-            ax.xaxis.set_major_locator(ticker.MultipleLocator(75))
+            ax.xaxis.set_major_locator(ticker.MultipleLocator(100))
 
             for cty in country_list:
                 file_name = cty + '.csv'
@@ -79,7 +79,7 @@ def write():
 
             #plt.xticks(rotation=45)
             ax = plt.gca()
-            ax.xaxis.set_major_locator(ticker.MultipleLocator(75))
+            ax.xaxis.set_major_locator(ticker.MultipleLocator(100))
 
             for cty in country_list:
                 file_name = cty + '.csv'
