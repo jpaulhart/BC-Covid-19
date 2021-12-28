@@ -26,6 +26,7 @@ def write():
     st.markdown('#### ')
 
     country_lists = [
+        ['Mexico']
         ['Italy'], 
         ['Spain'], 
         ['Portugal'], 
