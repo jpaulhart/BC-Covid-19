@@ -79,8 +79,8 @@ def write():
         #plt.plot(dfPr['date'], dfProv['confirmedNewMean'], label='New Cases - Smoothed')
         #plt.plot(dfRegion['data'], dfRegion['totale_positivi'], label='Total Positives')
         plt.bar(dfRegion['data'], dfRegion['nuovi_positivi'], label='New Positives', color='0')
-        plt.plot(dfRegion['data'], dfRegion['rolling'], label='Average New Positives', color='r')
-        plt.plot(dfRegion['data'], dfRegion['nuovi_deceduti'], label='Deaths', color='c')
+        plt.plot(dfRegion['data'], dfRegion['rolling'], label='Average New Positives', color='r', linewidth=4)
+        plt.plot(dfRegion['data'], dfRegion['nuovi_deceduti'], label='Deaths', color='c', linewidth=4)
         #plt.plot(dfRegion['data'], dfRegion['totale_casi'], label='Total Cases')
 
         # Add a legend
