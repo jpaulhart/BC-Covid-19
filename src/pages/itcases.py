@@ -65,6 +65,7 @@ def write():
         # lastDate = dfLast.iloc[0]["data"]
         # cn.ITALY_LAST_DATE = lastDate
         # cn.DATE_SPANS()
+        
 
         #st.write(f"Dates: {first_data} - {last_data}")
         fig1 = plt.figure(1, figsize=(8, 5))
@@ -78,9 +79,9 @@ def write():
 
         #plt.plot(dfPr['date'], dfProv['confirmedNewMean'], label='New Cases - Smoothed')
         #plt.plot(dfRegion['data'], dfRegion['totale_positivi'], label='Total Positives')
-        plt.bar(dfRegion['data'], dfRegion['nuovi_positivi'], label='New Positives', color='0')
-        plt.plot(dfRegion['data'], dfRegion['rolling'], label='Average New Positives', color='r', linewidth=4)
-        plt.plot(dfRegion['data'], dfRegion['nuovi_deceduti'], label='Deaths', color='c', linewidth=4)
+        plt.bar(dfRegion['data'], dfRegion['nuovi_positivi'], label='New Positives', color='lightseagreen'')
+        plt.plot(dfRegion['data'], dfRegion['rolling'], label='Average New Positives', color='r', linewidth=2)
+        plt.plot(dfRegion['data'], dfRegion['nuovi_deceduti'], label='Deaths', color='c', linewidth=2)
         #plt.plot(dfRegion['data'], dfRegion['totale_casi'], label='Total Cases')
 
         # Add a legend
