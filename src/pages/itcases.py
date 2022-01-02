@@ -79,7 +79,11 @@ def write():
 
         #plt.plot(dfPr['date'], dfProv['confirmedNewMean'], label='New Cases - Smoothed')
         #plt.plot(dfRegion['data'], dfRegion['totale_positivi'], label='Total Positives')
+<<<<<<< HEAD
         plt.bar(dfRegion['data'], dfRegion['nuovi_positivi'], label='New Positives', color='lightseagreen'')
+=======
+        plt.bar(dfRegion['data'], dfRegion['nuovi_positivi'], label='New Positives', color='0')
+>>>>>>> 00080088570a247bcfa0155b9c62f49c46ba26f2
         plt.plot(dfRegion['data'], dfRegion['rolling'], label='Average New Positives', color='r', linewidth=2)
         plt.plot(dfRegion['data'], dfRegion['nuovi_deceduti'], label='Deaths', color='c', linewidth=2)
         #plt.plot(dfRegion['data'], dfRegion['totale_casi'], label='Total Cases')
