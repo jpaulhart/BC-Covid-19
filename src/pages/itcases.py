@@ -82,7 +82,7 @@ def write():
         plt.bar(dfRegion['data'], dfRegion['nuovi_positivi'], label='New Positives', color='lightseagreen')
         plt.plot(dfRegion['data'], dfRegion['rolling'], label='Average New Positives', color='r', linewidth=2)
         plt.plot(dfRegion['data'], dfRegion['nuovi_deceduti'], label='Deaths', color='c', linewidth=2)
-        plt.plot(dfRegion['data'], dfRegion['ricoverati_con_sintomi'], label='Deaths', color='b', linewidth=2)
+        plt.plot(dfRegion['data'], dfRegion['ricoverati_con_sintomi'], label='Deaths', color='black', linewidth=2)
         #plt.plot(dfRegion['data'], dfRegion['totale_casi'], label='Total Cases')
 
         # Add a legend
