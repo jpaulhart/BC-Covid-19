@@ -86,7 +86,7 @@ def write():
         #plt.plot(dfRegion['data'], dfRegion['totale_casi'], label='Total Cases')
 
         # Add a legend
-        plt.legend(['Average New Positives', 'New Deaths', 'New Positives', 'Hospitalized'])
+        plt.legend(['Average New Positives', 'New Deaths', 'Hospitalized', 'New Positives', 'Hospitalized'])
         plt.grid(b=True, which='major')
         st.pyplot(fig1)
         #plt.show()
