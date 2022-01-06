@@ -66,7 +66,7 @@ def write():
 
     #plt.xticks(rotation=45)
     ax = plt.gca()
-    ax.xaxis.set_major_locator(ticker.MultipleLocator(75))
+    ax.xaxis.set_major_locator(ticker.MultipleLocator(200))
 
     #plt.plot(dfPr['date'], dfProv['confirmedNewMean'], label='New Cases - Smoothed')
     plt.plot(dfal['Date'], dfal['ConfirmedNewPer1M'], label='Alberta')
@@ -96,7 +96,7 @@ def write():
 
     #plt.xticks(rotation=45)
     ax = plt.gca()
-    ax.xaxis.set_major_locator(ticker.MultipleLocator(75))
+    ax.xaxis.set_major_locator(ticker.MultipleLocator(200))
 
     #plt.plot(dfPr['date'], dfProv['confirmedNewMean'], label='New Cases - Smoothed')
     plt.plot(dfal['Date'], dfal['DeathsNewPer1M'], label='Alberta')
