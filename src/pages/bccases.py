@@ -175,7 +175,7 @@ def graphsByGraphs(dfProv):
 
     #plt.xticks(rotation=45)
     ax = plt.gca()
-    ax.xaxis.set_major_locator(ticker.MultipleLocator(100))
+    ax.xaxis.set_major_locator(ticker.MultipleLocator(110))
 
     plt.plot(dfProv['Date'], dfProv['ConfirmedNewMean'], label='New Cases - Smoothed')
     plt.grid(b=True, which='major')
@@ -197,7 +197,7 @@ def graphsByGraphs(dfProv):
 
     #plt.xticks(rotation=45)
     ax = plt.gca()
-    ax.xaxis.set_major_locator(ticker.MultipleLocator(100))
+    ax.xaxis.set_major_locator(ticker.MultipleLocator(110))
 
     plt.plot(dfProv['Date'], dfProv['DeathsNewMean'], label='New Deaths - Smoothed')
     plt.grid(b=True, which='major')
