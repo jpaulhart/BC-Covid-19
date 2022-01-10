@@ -71,11 +71,13 @@ def write():
     #plt.plot(dfPr['date'], dfProv['confirmedNewMean'], label='New Cases - Smoothed')
     plt.plot(dfal['Date'], dfal['ConfirmedNewPer1M'], label='Alberta')
     plt.plot(dfbc['Date'], dfbc['ConfirmedNewPer1M'], label='British Columbia')
-    plt.plot(dfon['Date'], dfon['ConfirmedNewPer1M'], label='Ontario')
-    plt.plot(dfqu['Date'], dfqu['ConfirmedNewPer1M'], label='Quebec')
+    #plt.plot(dfon['Date'], dfon['ConfirmedNewPer1M'], label='Ontario')
+    #plt.plot(dfqu['Date'], dfqu['ConfirmedNewPer1M'], label='Quebec')
 
     # Add a legend
-    plt.legend(['Alberta', 'British Columbia', 'Ontario', 'Quebec'])
+    #plt.legend(['Alberta', 'British Columbia', 'Ontario', 'Quebec'])
+    plt.legend(['Alberta', 'British Columbia'])
+    #plt.legend(['Alberta', 'British Columbia', 'Ontario', 'Quebec'])
     plt.grid(b=True, which='major')
     st.pyplot(fig1)
     plt.close()
@@ -101,11 +103,12 @@ def write():
     #plt.plot(dfPr['date'], dfProv['confirmedNewMean'], label='New Cases - Smoothed')
     plt.plot(dfal['Date'], dfal['DeathsNewPer1M'], label='Alberta')
     plt.plot(dfbc['Date'], dfbc['DeathsNewPer1M'], label='British Columbia')
-    plt.plot(dfon['Date'], dfon['DeathsNewPer1M'], label='Ontario')
-    plt.plot(dfqu['Date'], dfqu['DeathsNewPer1M'], label='Quebec')
+    #plt.plot(dfon['Date'], dfon['DeathsNewPer1M'], label='Ontario')
+    #plt.plot(dfqu['Date'], dfqu['DeathsNewPer1M'], label='Quebec')
 
     # Add a legend
-    plt.legend(['Alberta', 'British Columbia', 'Ontario', 'Quebec'])
-    plt.grid(b=True, which='major')
+    plt.legend(['Alberta', 'British Columbia'])
+    #plt.legend(['Alberta', 'British Columbia', 'Ontario', 'Quebec'])
+    #plt.grid(b=True, which='major')
     st.pyplot(fig1)
     plt.close()
